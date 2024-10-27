@@ -1,0 +1,25 @@
+name: ZIP And Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Zip files
+        run: |
+          zip -r index.zip index.html favicon.png script.js style.css
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: index.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
