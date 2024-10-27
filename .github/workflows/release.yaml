@@ -3,7 +3,7 @@ name: ZIP And Release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -16,4 +16,3 @@ jobs:
           type: 'zip'
           filename: 'index.zip'
           exclusions: '*.git* LICENSE REAMDME.md *.github*'
-          
